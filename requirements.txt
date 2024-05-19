@@ -5,3 +5,5 @@ python-telegram-bot==21.1.1
 cryptography==3.4.7
 pyOpenSSL==20.0.1
 requests==2.25.1
+urllib3==1.26.15
+requests-toolbelt==0.10.1
