@@ -198,7 +198,7 @@ def get_services(update, context):
                     'systemctl list-units --type=service | tail -n 20')
 
 def get_repl_logs(update, context):
-    output = execute_command(host, port, username, password, "cat /var/log/postgresql/postgresql-14-main.log | grep replication | head -10")
+    output = run_ssh_command(update, context, 'Логи репликации:', 'cat /var/log/postgresql/postgresql-14-main.log | grep replication | head -10')
     update.message.reply_text(output)
 
 
