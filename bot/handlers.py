@@ -198,43 +198,7 @@ def get_services(update, context):
                     'systemctl list-units --type=service | tail -n 20')
 
 def get_repl_logs(update, context):
-    # try:
-    #     # Подключение к базе данных.
-    #     connection = psycopg2.connect(
-    #         host=os.getenv('DB_HOST'), 
-    #         port=os.getenv('DB_PORT'), 
-    #         database=os.getenv('DB_DATABASE'), 
-    #         user=os.getenv('DB_USER'), 
-    #         password=os.getenv('DB_PASSWORD')
-    #     )
-        
-    #     cursor = connection.cursor()
-        
-    #     # Получение логов с использованием функции pg_read_file.
-    #     cursor.execute("SELECT pg_read_file(pg_current_logfile());")
-    #     logs = cursor.fetchone()[0]  # fetchone возвращает кортеж, извлекаем первый элемент.
-        
-    #     # Форматирование и фильтрация логов.
-    #     replication_logs = [line for line in logs.split('\n') if os.getenv('DB_REPL_USER') in line]
-        
-    #     if not replication_logs:
-    #         answer = 'События репликации не обнаружены'
-    #     else:
-    #         answer = 'Логи репликации:\n' + '\n'.join(replication_logs)
-        
-    #     # Разбивка сообщения на части для отправки.
-    #     for i in range(0, len(answer), 4096):
-    #         update.message.reply_text(answer[i:i+4096])
-    
-    # except (Exception, psycopg2.DatabaseError) as error:
-    #     update.message.reply_text(f'Ошибка при получении логов репликации: {error}')
-    
-    # finally:
-    #     if connection:
-    #         cursor.close()
-    #         connection.close()
     user = update.effective_user
-    logging.info(f'Calling command /get_repl_logs - User:{user.full_name}')
     command = "cat /var/log/postgresql/postgresql.log | grep repl | tail -n 15"
     res = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if res.returncode != 0 or res.stderr.decode():
