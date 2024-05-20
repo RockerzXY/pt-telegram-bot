@@ -1,0 +1,41 @@
+all:
+  hosts:
+    host1:
+      ansible_user: ansible
+      ansible_ssh_pass: ansible
+      ansible_host: 192.168.1.21
+
+    host2:
+      ansible_user: ansible
+      ansible_ssh_pass: ansible
+      ansible_host: 192.168.1.22
+
+  vars:
+    TOKEN: 
+    GIT: https://github.com/RockerzXY/pt-telegram-bot/
+    WORKDIR: /home/user/ansible
+    HOST_USER: user
+    POSTGRES_VERSION: 14
+
+
+    RM_HOST: 192.168.1.22
+    RM_PORT: 22
+    RM_USER: ansible
+    RM_PASSWORD: ansible
+
+    DB_HOST: 192.168.1.21
+    DB_PORT: 5432
+    DB_USER: postgres
+    DB_PASSWORD: Qq123456
+    DB_DATABASE: db_pt
+
+    DB_REPL_HOST: 192.168.1.22
+    DB_REPL_PORT: 5432
+    DB_REPL_USER: repl_user
+    DB_REPL_PASSWORD: Qq123456
+
+
+
+
+
+
