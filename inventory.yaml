@@ -1,41 +1,39 @@
 all:
   hosts:
+    # db_host
     host1:
+      ansible_host:
       ansible_user: ansible
       ansible_ssh_pass: ansible
-      ansible_host: 192.168.1.21
 
+    # replica_host
     host2:
+      ansible_host:
       ansible_user: ansible
       ansible_ssh_pass: ansible
-      ansible_host: 192.168.1.22
 
   vars:
-    TOKEN: 
+    TOKEN: "YOUR_TELEGRAM_BOT_TOKEN"
     GIT: https://github.com/RockerzXY/pt-telegram-bot/
-    WORKDIR: /home/user/ansible
+    WORKDIR: "/home/user/ansible"
     HOST_USER: user
     POSTGRES_VERSION: 14
 
-
-    RM_HOST: 192.168.1.22
+    # Настройки удалённого сервера
+    RM_HOST:
     RM_PORT: 22
     RM_USER: ansible
     RM_PASSWORD: ansible
 
-    DB_HOST: 192.168.1.21
+    # Основная база данных
+    DB_HOST:
     DB_PORT: 5432
     DB_USER: postgres
     DB_PASSWORD: Qq123456
     DB_DATABASE: db_pt
 
-    DB_REPL_HOST: 192.168.1.22
+    # Репликация базы данных
+    DB_REPL_HOST:
     DB_REPL_PORT: 5432
     DB_REPL_USER: repl_user
     DB_REPL_PASSWORD: Qq123456
-
-
-
-
-
-
